@@ -15,6 +15,22 @@
       "category": "Alimentação",
       "price": 45,
       "createdAt": "2023-03-18T23: 18: 36.562Z"
+    },
+    {
+      "id": 3,
+      "description": "Processador PC",
+      "type": "outcome",
+      "category": "Hardware",
+      "price": 2200,
+      "createdAt": "2023-03-23T23: 13: 45.562Z"
+    },
+    {
+      "id": 4,
+      "description": "Novo Cliente",
+      "type": "income",
+      "category": "Venda",
+      "price": 22500,
+      "createdAt": "2023-03-23T19: 26: 12.562Z"
     }
   ]
 }
