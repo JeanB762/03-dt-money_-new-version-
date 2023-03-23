@@ -11,6 +11,9 @@ import {
   TransactionType,
   TransactionTypeButton,
 } from './styles';
+import { api } from '../../lib/axios';
+import { TransactionContext } from '../../context/TransactionsContext';
+import { useContext } from 'react';
 
 const newTransactionFormSchema = z.object({
   description: z.string(),
@@ -22,18 +25,21 @@ const newTransactionFormSchema = z.object({
 type NewTransactonFormInputs = z.infer<typeof newTransactionFormSchema>;
 
 export function NewTransactionModal() {
+  const { createTransaction } = useContext(TransactionContext);
   const {
     control,
     register,
     handleSubmit,
+    reset,
     formState: { isSubmitting },
   } = useForm<NewTransactonFormInputs>({
     resolver: zodResolver(newTransactionFormSchema),
   });
 
   async function handleCreateNewTransaction(data: NewTransactonFormInputs) {
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    console.log(data);
+    const { description, price, category, type } = data;
+    await createTransaction({ description, price, category, type });
+    reset();
   }
 
   return (
